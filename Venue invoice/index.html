@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Login -->
+  <div class="login-page login-box" id="login-box">
+    <form class="login-form" onsubmit="return loginUser()">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <!-- Invoice -->
+  <div class="invoice-box" id="invoice-box">
+    <div class="header-section">
+      <div>
+        <h1>THE VENUE</h1>
+        <p>52-11-5, NTR COLONY<br>Gunadala, Vijayawada, Andhra Pradesh - 520008<br>Phone: 9133038888</p>
+      </div>
+      <div>
+        <h2>INVOICE</h2>
+        <p>Date: <input type="date" id="invoice-date" /><br>Invoice Number: <input type="text" id="invoice-number" placeholder="Auto/Manual" /></p>
+      </div>
+    </div>
+
+    <div class="gst-center">GSTIN: 37AAIFT8812D2Z1</div>
+
+    <div class="highlight">BILL TO</div>
+    <p>Name: <input type="text" /><br>Address: <input type="text" /></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>DESCRIPTION</th>
+          <th>TAXED</th>
+          <th>AMOUNT (₹)</th>
+        </tr>
+      </thead>
+      <tbody id="items">
+        <tr>
+          <td><input type="text" value="HALL RENT" /></td>
+          <td style="text-align:center;"><input type="checkbox" checked /></td>
+          <td><input type="number" value="100000" class="amount" /></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="no-print" onclick="addRow()">Add Row</button>
+
+    <div class="totals-container">
+      <div class="comments">
+        <div class="highlight">OTHER COMMENTS</div>
+        <p><input type="text" placeholder="Add a comment..." /></p>
+        <p>1. Total payment due in 30 days<br>
+           2. Please include the invoice number on your check</p>
+        <p><strong>Make all checks payable to:</strong><br>
+           THE VENUE<br>
+           UNION BANK: 034311100002494<br>
+           IFSC CODE: UBIN0803430</p>
+      </div>
+      <div class="totals">
+        <p><strong>Subtotal:</strong> ₹ <span id="subtotal">0</span></p>
+        <p><strong>SGST 9%:</strong> ₹ <span id="sgst">0</span></p>
+        <p><strong>CGST 9%:</strong> ₹ <span id="cgst">0</span></p>
+        <p><strong>Other:</strong> ₹ <input type="number" id="other" value="0" oninput="calculateTotal()" /></p>
+        <p><strong>Total:</strong> ₹ <span id="total">0</span></p>
+      </div>
+    </div>
+
+    <div class="center"><em>Thank You For Your Business!</em></div>
+
+    <div class="signature">
+      <div class="signature-line"></div>
+    </div>
+    <div class="authorized">Authorized Signatory</div>
+
+    <div class="center">
+      <button class="no-print" onclick="window.print()">Print / Download Invoice</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
